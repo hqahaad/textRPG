@@ -12,33 +12,28 @@ namespace textRPG.Scenes
           {
                base.View();
 
-               Console.WriteLine("1. 새로운 게임");
-               Console.WriteLine("2. 불러오기");
-               Console.WriteLine("3. 종료");
-               Console.WriteLine();
-               Console.Write(">>  ");
-
-               while (true)
-               {
-                    bool isInt = int.TryParse(Console.ReadLine(), out int select);
-
-
-               }
+               OptionSelecter.AddOption("1. 새로운 게임", "1", NewGame);
+               OptionSelecter.AddOption("2. 불러오기", "2", LoadData);
+               OptionSelecter.AddOption("3. 종료", "3", ExitGame);
+               OptionSelecter.SetExceptionMessage("\n다시 입력해주세요");
+               OptionSelecter.ShowAll();
+               OptionSelecter.Choice("\n>>  ");
           }
 
           private void NewGame()
           {
-
+               Console.WriteLine("New Game");
           }
 
           private void LoadData()
           {
-
+               Console.WriteLine("Load Data");
           }
 
           private void ExitGame()
           {
-
+               Console.WriteLine("ExitGame");
+               
           }
 
      }

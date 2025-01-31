@@ -8,6 +8,8 @@ namespace textRPG.Scenes
 {
      public abstract class Scene
      {
+          public string? Name { get; set; }
+
           public virtual void View()
           {
                Console.Clear();

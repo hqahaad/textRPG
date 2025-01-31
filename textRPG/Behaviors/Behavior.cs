@@ -16,10 +16,12 @@ namespace textRPG.Behaviors
                behavior.BehaviorName = name;
 
                behaviors.Add(behavior);
+
+               
           }
 
-          public string BehaviorName { get; private set; }
-          public string BehaviorDesc { get; private set; }
+          public string BehaviorName { get; private set; } = string.Empty;
+          public string BehaviorDesc { get; private set; } = string.Empty;
 
           public virtual void Start()
           {
