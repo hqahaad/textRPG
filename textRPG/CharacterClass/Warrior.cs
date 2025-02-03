@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace textRPG.Behaviors
+namespace textRPG.CharacterClass
 {
-     public class ShopBhv : Behavior
+     public class Warrior : Character
      {
+
      }
 }

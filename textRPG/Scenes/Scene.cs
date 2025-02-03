@@ -10,7 +10,12 @@ namespace textRPG.Scenes
      {
           public string? Name { get; set; }
 
-          public virtual void View()
+          public virtual void Start()
+          {
+               Console.Clear();
+          }
+
+          public virtual void End()
           {
                Console.Clear();
           }

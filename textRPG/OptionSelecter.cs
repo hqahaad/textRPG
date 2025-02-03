@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace textRPG
 {
-     public static class OptionSelecter
+     public class OptionSelecter
      {
           public class OptionContainer
           {
@@ -19,24 +19,30 @@ namespace textRPG
                }
           }
 
-          private static Dictionary<string, OptionContainer> options = new Dictionary<string, OptionContainer>();
-          private static OptionContainer exception = new OptionContainer();
+          private Dictionary<string, OptionContainer> options;
+          private OptionContainer exception;
 
-          public static void SetExceptionMessage(string msg)
+          public OptionSelecter()
+          {
+               options = new Dictionary<string, OptionContainer>();
+               exception = new OptionContainer();
+          }
+
+          public static OptionSelecter Create()
+          {
+               return new OptionSelecter();
+          }
+
+          public void SetExceptionMessage(string msg)
           {
                exception.optionName = msg;
           }
-          public static void SetExceptionEvent(Action? action)
+          public void SetExceptionEvent(Action? action)
           {
                exception.optionEvent += action;
           }
 
-          public static void Clear()
-          {
-               options.Clear();
-          }
-
-          public static void AddOption(string text, string key, Action? action = null)
+          public void AddOption(string text, string key, Action? action = null)
           {
                if (!options.TryGetValue(key, out var result))
                {
@@ -49,7 +55,7 @@ namespace textRPG
                }
           }
 
-          public static void Choice(string frontText = "")
+          public void Read(string frontText = "")
           {
                Console.Write(frontText);
                string? input = Console.ReadLine();
@@ -57,19 +63,19 @@ namespace textRPG
                if (options.TryGetValue(input, out var value))
                {
                     value?.Invoke();
-                    options.Clear();
                }
                else
                {
-                    Console.Clear();
-                    ShowAll();
-                    Console.WriteLine(exception?.optionName);
+                    if (exception.optionName.Length >= 1)
+                    {
+                         Console.WriteLine(exception?.optionName);
+                    }
                     exception?.Invoke();
-                    Choice(frontText);
+                    Read(frontText);
                }
           }
 
-          public static void ShowAll()
+          public void ShowSelecter()
           {
                foreach (var iter in options)
                {

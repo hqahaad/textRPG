@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace textRPG.Behaviors
+namespace textRPG.CharacterClass
 {
-     public class ShowInventoryBhv : Behavior
+     public class Wizard : Character
      {
 
      }
