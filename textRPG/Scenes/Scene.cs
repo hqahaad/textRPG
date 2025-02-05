@@ -8,7 +8,7 @@ namespace textRPG.Scenes
 {
      public abstract class Scene
      {
-          public string? Name { get; set; }
+          public virtual void Awake() { }
 
           public virtual void Start()
           {

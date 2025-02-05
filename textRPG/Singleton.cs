@@ -8,7 +8,7 @@ namespace textRPG
 {
     public class Singleton<T> where T : class, new()
     {
-          private static T instance = null;
+          private static T? instance = null;
 
           public static T Instance
           {

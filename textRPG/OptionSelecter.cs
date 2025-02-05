@@ -22,7 +22,7 @@ namespace textRPG
           private Dictionary<string, OptionContainer> options;
           private OptionContainer exception;
 
-          public OptionSelecter()
+          private OptionSelecter()
           {
                options = new Dictionary<string, OptionContainer>();
                exception = new OptionContainer();
@@ -55,7 +55,7 @@ namespace textRPG
                }
           }
 
-          public void Read(string frontText = "")
+          public void Select(string frontText = "")
           {
                Console.Write(frontText);
                string? input = Console.ReadLine();
@@ -71,11 +71,11 @@ namespace textRPG
                          Console.WriteLine(exception?.optionName);
                     }
                     exception?.Invoke();
-                    Read(frontText);
+                    Select(frontText);
                }
           }
 
-          public void ShowSelecter()
+          public void Display()
           {
                foreach (var iter in options)
                {

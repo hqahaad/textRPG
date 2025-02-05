@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using textRPG.Data;
 
-namespace textRPG.CharacterClass
+namespace textRPG
 {
-     public class Knight : Character
+     public interface IConsoleDisplay
      {
+          void Display();
      }
 }

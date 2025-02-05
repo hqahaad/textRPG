@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using textRPG.Data;
 
 namespace textRPG.CharacterClass
 {
+     public class CharacterData : ITableData
+     {
+          public int ID { get; set; }
+          public string? Name { get; set; }
+          public float Striking { get; set; } = 0f;
+          public float Defensive { get; set; } = 0f;
+          public int MaxHp { get; set; } = 0;
+
+          public int GetID() => ID;
+     }
+
      public abstract class Character
      {
-          public string? className { get; set; }
-          public string? classDesc { get; set; }
+          public CharacterData? characterData = new();
 
-          public Stat<int> maxHp;
-          public Stat<float> strikingPower;
-          public Stat<float> defensivePower;
-
-          public Character()
+          public virtual void DataLoad(int id)
           {
-               maxHp = new Stat<int>();
-               strikingPower = new Stat<float>();
-               defensivePower = new Stat<float>();
+               characterData = GameTable.GetElement<CharacterData>(GameTable.characterTableName, id);
           }
      }
 }

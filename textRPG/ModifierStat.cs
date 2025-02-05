@@ -7,11 +7,11 @@ using System.Numerics;
 
 namespace textRPG
 {
-     public class Stat<T> where T : INumber<T>
+     public class ModifierStat<T> where T : INumber<T>
      {
           private List<T> values;
 
-          public static implicit operator T(Stat<T> statValue)
+          public static implicit operator T(ModifierStat<T> statValue)
           {
                T sum = T.Zero;
                statValue.values.ForEach(v => sum += v);
@@ -32,7 +32,7 @@ namespace textRPG
                }
           }
 
-          public Stat()
+          public ModifierStat()
           {
                values = new List<T>();
 

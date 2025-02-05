@@ -26,6 +26,7 @@ namespace textRPG.Scenes
                     if (scenes.TryGetValue(sceneName, out var value))
                     {
                          currentScene = value;
+                         currentScene.Awake();
                          currentScene.Start();
 
                          return true;
@@ -37,6 +38,7 @@ namespace textRPG.Scenes
                     {
                          currentScene.End();
                          currentScene = value;
+                         currentScene.Awake();
                          currentScene.Start();
 
                          return true;
