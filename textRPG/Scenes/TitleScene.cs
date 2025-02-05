@@ -54,10 +54,8 @@ namespace textRPG.Scenes
                GameManager.Instance.SetPlayer(player);
                
                Inventory? inventory = Inventory.CreateInventory();
-               //cheating
-               inventory.inventoryData.Gold += 99999;
+               inventory.GetGold(1500);
                GameManager.Instance.SetInventory(inventory);
-               //game start
                SceneManager.Instance.LoadScene("LobbyScene");
           }
 

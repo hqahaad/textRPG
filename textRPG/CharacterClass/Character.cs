@@ -20,11 +20,6 @@ namespace textRPG.CharacterClass
 
      public abstract class Character
      {
-          public CharacterData? characterData = new();
 
-          public virtual void DataLoad(int id)
-          {
-               characterData = GameTable.GetElement<CharacterData>(GameTable.characterTableName, id);
-          }
      }
 }

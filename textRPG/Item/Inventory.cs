@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using textRPG.Data;
@@ -93,14 +94,6 @@ namespace textRPG.Item
 
           public bool IsContains(int id) => inventoryData.Items.Contains(id);
 
-          public bool IsEquipped(int itemId)
-          {
-
-
-               return false;
-          }
-
-
           public void Display()
           {
                Console.Clear();
@@ -131,11 +124,6 @@ namespace textRPG.Item
                Console.WriteLine("[아이템 목록]\n");
 
                var selecter = OptionSelecter.Create();
-
-               Action<ItemData> equipLogic = (item) =>
-               {
-
-               };
 
                for (int i = 0; i < InventoryItems.Count; i++)
                {
@@ -175,11 +163,12 @@ namespace textRPG.Item
 
                foreach (var iter in InventoryEquipment)
                {
-                    var equipment = GameTable.GetElement<ItemData>("ItemTable", iter.Value);
+                    var equipment = GameTable.GetElement<ItemData>(GameTable.itemTableName, iter.Value);
 
                     if (equipment != null)
                     {
-                         Equipped(equipment);
+                         GameManager.Instance.GetPlayer().StrikingPower[StatType.Equipment] += equipment.Striking;
+                         GameManager.Instance.GetPlayer().DefensivePower[StatType.Equipment] += equipment.Defensive;
                     }
                }
           }
